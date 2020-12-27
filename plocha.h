@@ -17,7 +17,7 @@ public:
     int pocetPoli;
     int sirkaPole;
     int score;
-    Pismo cisla;
+
     void kresli();
 
 

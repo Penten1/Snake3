@@ -61,7 +61,9 @@ int main(int argc, char** argv)
     Obrazovka* obrazovka = Obrazovka::instance();
     int ac;
     p = new Plocha;
-
+    Pismo cisla;
+    cisla.nacti("cisla.png","1234567890");
+    cisla.umisti(20,20);
     const int pocetPoli = p->pocetPoli;
     const int obrazovkaSirka = p->sirkaPole * pocetPoli;
     const int obrazovkaVyska = p->sirkaPole * pocetPoli;
