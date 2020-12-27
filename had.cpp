@@ -99,17 +99,12 @@ void Had::pohyb(){
             gameOver();
         }
 
-        //            if(!jeNarazDoOcasu(poziceX + rychlostX,poziceY + rychlostY)){
+
         if(!jeNarazDoOcasu(poziceX + rychlostX,poziceY + rychlostY)){
             poziceX = poziceX + rychlostX;
             poziceY = poziceY + rychlostY;
+
             //dolu
-            //                for(c = clanky.begin(); c != clanky.end(); c++)
-            //                {
-            //                    if((*c)->poziceX == poziceX && (*c)->poziceY == poziceY){
-            //                        a++;
-            //                    }
-            //                }
             if(rychlostX == 0 && rychlostY == rychlost){
                 if(rychlostX != 0 || rychlostY != 0){
                     clanky.push_back(new Clanek(poziceX,poziceY - 1,this));
@@ -133,10 +128,6 @@ void Had::pohyb(){
                     clanky.push_back(new Clanek(poziceX,poziceY+1,this));
                 }
             }
-            //                if(ovoce->poziceX==poziceX && ovoce->poziceY==poziceY){
-            //                    delkaHada = delkaHada + 5;
-            //                }
-            //clanky.push_back(new Clanek(poziceX,poziceY,this));
             if(delkaHada < clanky.size()){
                 clanky.pop_front();
             }
@@ -145,7 +136,7 @@ void Had::pohyb(){
         //            }
 
     }
-    //    counter = (zdrzeni % counter);
+
 
     counter++;
     if(counter == zdrzeni2){
@@ -157,18 +148,7 @@ void Had::pohyb(){
 
 
 }
-//if(poziceX  > pocetPoli - 1){
-//   return true;
-//}
-//if(poziceX < 0){
-//      return true;
-//}
-//if(poziceY < 1){
-//      return true;
-//}
-//if(poziceY > pocetPoli){
-//     return true;
-//}
+
 bool Had::gameOver(){
 
     if(poziceX  > pocetPoli - 1){

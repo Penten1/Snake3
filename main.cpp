@@ -13,6 +13,8 @@ Clanek *clanek;
 int otoc = 0;
 int otoc2 = 0;
 
+
+
 void Domecek(int bod1X,int bod1Y ,int bod2X, int bod2Y, int pocet, int barvaC){
 
     pocet++;
@@ -67,6 +69,10 @@ int main(int argc, char** argv)
     //    SDL_WM_SetIcon(SDL_LoadBMP("icon.BMP"), NULL);
     SDL_WM_SetCaption("Snake by Matyáš Skřenek", NULL);
 
+    Pismo cisla;
+    cisla.nacti("cisla.png","1234567890");
+    cisla.umisti(20,20);
+
     while(1)
     {
         int t1 = SDL_GetTicks();
@@ -87,7 +93,7 @@ int main(int argc, char** argv)
 
         //        stromecek();
 
-        for(int i = 0;i < p->Pocet;i++){
+        for(int i = 0;i < p->PocetJablek;i++){
             p->pole[i]->kresli();
         }
 
@@ -101,6 +107,9 @@ int main(int argc, char** argv)
         if(p->h->gameOver()){
             p->h->gameOverKresli();
         }
+
+        cisla.kresli(20);
+
         otocP=otoc;
         otocP2=otoc2;
 
@@ -108,6 +117,7 @@ int main(int argc, char** argv)
         obrazovka->aktualizuj();
 
         SDL_Event event;
+
         while(SDL_PollEvent(&event))
         {
             switch(event.type)
@@ -175,9 +185,9 @@ int main(int argc, char** argv)
                     if(p->h->gameOverTrue==true){
                         delete p->h;
                         p->h = new Had();
-                        for(int i = 0; i <= p->Pocet; i++){
+                        for(int i = 0; i <= p->PocetJablek; i++){
                             delete p->pole[i];
-                            p->pole[i] = new Ovoce;
+                            p->pole[i] = new Ovoce(p);
                         }
                     }
                     break;

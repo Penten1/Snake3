@@ -4,17 +4,18 @@
 #include "had.h"
 #include "ovoce.h"
 
+class Ovoce;
 class Had;
 class Plocha
 {
 public:
     Plocha();
     Had*h;
-    int Pocet;
+    int PocetJablek;
     Ovoce* pole[2];
     void kolize();
-
     int pocetPoli;
+    int sirkaPole;
 };
 
 #endif // PLOCHA_H
