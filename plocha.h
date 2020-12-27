@@ -24,6 +24,7 @@ public:
     int obrazovkaVyska;
     FILE * fw;
 
+
 };
 
 #endif // PLOCHA_H

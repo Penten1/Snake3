@@ -69,7 +69,8 @@ int main(int argc, char** argv)
     //    SDL_WM_SetIcon(SDL_LoadBMP("icon.BMP"), NULL);
     SDL_WM_SetCaption("Snake by Matyáš Skřenek", NULL);
 
-    p->fw = fopen("high score", "w");
+
+
     p->cisla.nacti("cisla.png","1234567890");
 
     while(1)
@@ -100,7 +101,15 @@ int main(int argc, char** argv)
         p->h->pohyb();
         p->kolize();
         if(p->h->gameOver()){
-            fprintf(p->fw,"%d",p->score);
+            p->fw = fopen("high score", "r");
+            int nacteneScore = 0;
+            fscanf(p->fw,"%d",&nacteneScore);
+            if(p->score > nacteneScore){
+                p->fw = fopen("high score", "w");
+                fprintf(p->fw,"%d",p->score);
+                fclose(p->fw);
+            }
+
             p->h->gameOverKresli();
         }
 
