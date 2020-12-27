@@ -103,6 +103,7 @@ int main(int argc, char** argv)
         p->kolize();
 
         if(p->h->gameOver()){
+            p->h->gameOverTrue = true;
             p->fw = fopen("high score", "r");
             p->nacteneScore = 0;
             fscanf(p->fw,"%d",&p->nacteneScore);
