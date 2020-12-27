@@ -69,9 +69,7 @@ int main(int argc, char** argv)
     //    SDL_WM_SetIcon(SDL_LoadBMP("icon.BMP"), NULL);
     SDL_WM_SetCaption("Snake by Matyáš Skřenek", NULL);
 
-    Pismo cisla;
-    cisla.nacti("cisla.png","1234567890");
-    cisla.umisti(20,20);
+
 
     while(1)
     {
@@ -108,7 +106,7 @@ int main(int argc, char** argv)
             p->h->gameOverKresli();
         }
 
-        cisla.kresli(20);
+
 
         otocP=otoc;
         otocP2=otoc2;

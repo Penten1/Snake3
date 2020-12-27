@@ -10,6 +10,8 @@ Plocha::Plocha()
     for(int i = 0;i < PocetJablek;i++){
         pole[i] = new Ovoce(this);
     }
+    cisla.nacti("cisla.png","1234567890");
+    cisla.umisti(20,20);
 }
 
 void Plocha::kolize(){
