@@ -62,14 +62,25 @@ int main(int argc, char** argv)
     int ac;
     p = new Plocha;
 
-    cisla.nacti("cisla.png","1234567890");
-    cisla.umisti(20,20);
+
+
+
     const int pocetPoli = p->pocetPoli;
     const int obrazovkaSirka = p->sirkaPole * pocetPoli;
     const int obrazovkaVyska = p->sirkaPole * pocetPoli;
     obrazovka->inicializuj(obrazovkaSirka, obrazovkaVyska, 0, 0);
     //    SDL_WM_SetIcon(SDL_LoadBMP("icon.BMP"), NULL);
     SDL_WM_SetCaption("Snake by Matyáš Skřenek", NULL);
+
+
+
+
+    obrazovka->inicializuj(p->obrazovkaSirka, p->obrazovkaVyska, 0, 0);
+    //    SDL_WM_SetIcon(SDL_LoadBMP("icon.BMP"), NULL);
+    SDL_WM_SetCaption("Snake by Matyáš Skřenek", NULL);
+
+
+    p->cisla.nacti("cisla.png","1234567890");
 
 
     while(1)
@@ -84,11 +95,7 @@ int main(int argc, char** argv)
 
         otocP=otoc;
         otocP2=otoc2;
-        for(float i = 0;i < obrazovkaSirka;i = i + obrazovkaSirka/pocetPoli){
-            barva(MODRA);
-            cara(i,0,i,obrazovkaVyska);
-            cara(0,i,obrazovkaSirka,i);
-        }
+
 
         //        stromecek();
 
@@ -111,6 +118,7 @@ int main(int argc, char** argv)
 
         otocP=otoc;
         otocP2=otoc2;
+        p->kresli();
 
         /* konec kresleni */
         obrazovka->aktualizuj();
