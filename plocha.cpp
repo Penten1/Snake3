@@ -7,7 +7,7 @@ Plocha::Plocha()
     pocetPoli = 30;
     sirkaPole = 32;
     h = new Had(this);
-    score = 0;
+    score = h->delkaHada;
     for(int i = 0;i < PocetJablek;i++){
         pole[i] = new Ovoce(this);
     }
@@ -22,13 +22,17 @@ void Plocha::kolize(){
             h->delkaHada = h->delkaHada + 2;
             delete pole[i];
             pole[i] = new Ovoce(this);
-            score = score + 10;
-
-
+            score = h->delkaHada;
+            if(score % 4 == 1 && score != 1){
+                if(score < 101){
+                    zdrzeni = zdrzeni - 5;
+                }
+            }
         }
     }
 
 }
+
 void Plocha::cary(){
     for(float i = 0;i < obrazovkaSirka;i = i + obrazovkaSirka/pocetPoli){
         barva(MODRA);
@@ -36,6 +40,7 @@ void Plocha::cary(){
         cara(0,i,obrazovkaSirka,i);
     }
 }
+
 void Plocha::kresli(){
 //    cary();
     cisla.kresli(score);

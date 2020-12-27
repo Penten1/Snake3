@@ -28,6 +28,7 @@ public:
     FILE * fw;
     void gameOverKresli();
     Obrazek gameOver2;
+    int zdrzeni = 190; /*ms*/
 
 };
 

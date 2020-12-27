@@ -16,6 +16,7 @@ int otoc2 = 0;
 
 
 
+
 void Domecek(int bod1X,int bod1Y ,int bod2X, int bod2Y, int pocet, int barvaC){
 
     pocet++;
@@ -88,6 +89,8 @@ int main(int argc, char** argv)
         otocP2=otoc2;
 
 
+
+
         //        stromecek();
 
         for(int i = 0;i < p->PocetJablek;i++){
@@ -99,8 +102,8 @@ int main(int argc, char** argv)
         otocP=otoc;
         otocP2=otoc2;
 
-        p->h->pohyb();
-        p->kolize();
+
+
 
         if(p->h->gameOver()){
             p->h->gameOverTrue = true;
@@ -199,6 +202,7 @@ int main(int argc, char** argv)
                             delete p->pole[i];
                             p->pole[i] = new Ovoce(p);
                         }
+                        p->score = 0;
                     }
                     break;
                 }
@@ -209,9 +213,11 @@ int main(int argc, char** argv)
 
             }
         }
+        p->h->pohyb();
+        p->kolize();
         int t2 = SDL_GetTicks();
         int t3 = t2 - t1;//5
-        int delay = 17 - t3;
+        int delay = p->zdrzeni - t3;
         if(delay < 0){
             delay = 0;
         }

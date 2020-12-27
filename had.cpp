@@ -23,7 +23,7 @@ Had::Had(Plocha *p)
     poziceX = (obrazovkaSirka / 2) / sirkaHada;
     //    poziceY = 1;
     //    poziceX = 1;
-    zdrzeni = 10;
+    zdrzeni = 1;
     zdrzeni2 = zdrzeni * 2 + 1;
     counter = zdrzeni + 1;
     rychlost = 1;
