@@ -8,19 +8,14 @@
 #include "math.h"
 
 Plocha *p;
-//Had *h;
-
 Clanek *clanek;
 
-//int pocet = 0;
 int otoc = 0;
 int otoc2 = 0;
 
 void Domecek(int bod1X,int bod1Y ,int bod2X, int bod2Y, int pocet, int barvaC){
 
-
     pocet++;
-
     if(pocet <= 10){
         barvaC = barvaC + 15;
         int a= 255-barvaC;
@@ -61,27 +56,16 @@ void stromecek(){
 }
 int main(int argc, char** argv)
 {
-
     Obrazovka* obrazovka = Obrazovka::instance();
     int ac;
     p = new Plocha;
-    //    h = new Had;
 
     const int pocetPoli = 30;
     const int obrazovkaSirka = p->h->sirkaHada * pocetPoli;
     const int obrazovkaVyska = p->h->sirkaHada * pocetPoli;
     obrazovka->inicializuj(obrazovkaSirka, obrazovkaVyska, 0, 0);
-//    SDL_WM_SetIcon(SDL_LoadBMP("icon.BMP"), NULL);
+    //    SDL_WM_SetIcon(SDL_LoadBMP("icon.BMP"), NULL);
     SDL_WM_SetCaption("Snake by Matyáš Skřenek", NULL);
-
-
-
-
-
-
-
-    //        // Na začátku main funkce jednorázově vytvořím seznam a iterátor (záložku)
-
 
     while(1)
     {
@@ -89,38 +73,28 @@ int main(int argc, char** argv)
         int otocP;
         int otocP2;
 
-        //        if(!h->gameOver()){
         obrazovka->smaz();
-        //        }
-
 
         /* zacatek kresleni */
 
         otocP=otoc;
         otocP2=otoc2;
-        //zacni tim ze udelas kosticku
         for(float i = 0;i < obrazovkaSirka;i = i + obrazovkaSirka/pocetPoli){
             barva(MODRA);
             cara(i,0,i,obrazovkaVyska);
             cara(0,i,obrazovkaSirka,i);
         }
+
         //        stromecek();
+
         for(int i = 0;i < p->Pocet;i++){
-        p->pole[i]->kresli();
+            p->pole[i]->kresli();
         }
 
         p->h->kresli();
+
         otocP=otoc;
         otocP2=otoc2;
-        //        Domecek(40,70,70);
-
-        //            for(int i = 0; i < h->sirkaHada;i ++){
-        //                barva(75, 254, 0);
-        //                cara((h->poziceX -1) * h->sirkaHada + i,h->poziceY * h->sirkaHada - h->sirkaHada, (h->poziceX -1) * h->sirkaHada + i,h->poziceY * h->sirkaHada);
-        //            }
-
-
-
 
         p->h->pohyb();
         p->kolize();
@@ -129,51 +103,9 @@ int main(int argc, char** argv)
         }
         otocP=otoc;
         otocP2=otoc2;
-        //        if(h->poziceX  > pocetPoli - 1){
-        //           h->gameOver();
-        //        }
-        //        if(h->poziceX < 0){
-        //              h->gameOver();
-        //        }
-        //        if(h->poziceY < 1){
-        //              h->gameOver();
-        //        }
-        //        if(h->poziceY > pocetPoli){
-        //            h->gameOver();
-        //        }
 
-
-        //        // V hlavní části programu procházím seznamem a všechny existující střely kreslím
-
-        //        if(h->delkaHada < clanky.size()){
-        //            clanky.pop_front();
-        //        }
-
-        //        for(c = clanky.rbegin(); c != clanky.rend(); c++)
-        //        {
-        //            // kreslení a další věci
-
-        //            if(h->delkaHada <= a)
-        //            {
-
-        //                    delete *c;
-        //                    c = clanky.erase(c);
-        //                    c--;
-        //            }
-        //            a++;
-        //        }
         /* konec kresleni */
-
-
         obrazovka->aktualizuj();
-
-
-
-
-
-
-
-
 
         SDL_Event event;
         while(SDL_PollEvent(&event))
@@ -198,13 +130,10 @@ int main(int argc, char** argv)
                             if(otoc == 0 && otoc2 == 0){
                                 otoc = 1;
                             }
-
                         }
                     }
                     break;
                 case SDLK_w:
-
-
                     if(p->h->gameOverTrue == false){
                         if((p->h->rychlostX != 0 && p->h->rychlostY != p->h->rychlost) || (p->h->rychlostX == 0 && p->h->rychlostY == 0)){
                             if(otoc != 0 && otoc2 == 0){
@@ -213,23 +142,19 @@ int main(int argc, char** argv)
                             if(otoc == 0 && otoc2 == 0){
                                 otoc = 2;
                             }
-
                         }
                     }
-
                     break;
 
                 case SDLK_s:
                     if(p->h->gameOverTrue == false){
                         if((p->h->rychlostX != 0 && p->h->rychlostY != -p->h->rychlost)){
-
                             if(otoc != 0 && otoc2 == 0){
                                 otoc2 = 3;
                             }
                             if(otoc == 0 && otoc2 == 0){
                                 otoc = 3;
                             }
-
                         }
                     }
                     break;
@@ -243,7 +168,6 @@ int main(int argc, char** argv)
                             if(otoc == 0 && otoc2 == 0){
                                 otoc = 4;
                             }
-
                         }
                     }
                     break;
@@ -256,7 +180,6 @@ int main(int argc, char** argv)
                             p->pole[i] = new Ovoce;
                         }
                     }
-
                     break;
                 }
                 break;
