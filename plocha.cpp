@@ -6,12 +6,13 @@ Plocha::Plocha()
     pocetPoli = 30;
     sirkaPole = 32;
     h = new Had();
-
+    score = 0;
     for(int i = 0;i < PocetJablek;i++){
         pole[i] = new Ovoce(this);
     }
-    cisla.nacti("cisla.png","1234567890");
     cisla.umisti(20,20);
+    obrazovkaSirka = sirkaPole * pocetPoli;
+    obrazovkaVyska = sirkaPole * pocetPoli;
 }
 
 void Plocha::kolize(){
@@ -20,7 +21,22 @@ void Plocha::kolize(){
             h->delkaHada = h->delkaHada + 2;
             delete pole[i];
             pole[i] = new Ovoce(this);
+            score = score + 10;
         }
     }
 
 }
+void Plocha::cary(){
+    for(float i = 0;i < obrazovkaSirka;i = i + obrazovkaSirka/pocetPoli){
+        barva(MODRA);
+        cara(i,0,i,obrazovkaVyska);
+        cara(0,i,obrazovkaSirka,i);
+    }
+}
+void Plocha::kresli(){
+    cary();
+    cisla.kresli(score);
+
+}
+
+

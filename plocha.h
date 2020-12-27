@@ -17,6 +17,11 @@ public:
     int pocetPoli;
     int sirkaPole;
     Pismo cisla;
+    int score;
+    void cary();
+    void kresli();
+    int obrazovkaSirka;
+    int obrazovkaVyska;
 
 };
 
