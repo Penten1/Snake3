@@ -7,6 +7,7 @@
 #include "plocha.h"
 #include "math.h"
 
+
 Plocha *p;
 Clanek *clanek;
 
@@ -62,13 +63,13 @@ int main(int argc, char** argv)
     int ac;
     p = new Plocha;
 
-    const int pocetPoli = p->pocetPoli;
+
 
     obrazovka->inicializuj(p->obrazovkaSirka, p->obrazovkaVyska, 0, 0);
     //    SDL_WM_SetIcon(SDL_LoadBMP("icon.BMP"), NULL);
     SDL_WM_SetCaption("Snake by Matyáš Skřenek", NULL);
 
-
+    p->fw = fopen("high score", "w");
     p->cisla.nacti("cisla.png","1234567890");
 
     while(1)
@@ -99,8 +100,10 @@ int main(int argc, char** argv)
         p->h->pohyb();
         p->kolize();
         if(p->h->gameOver()){
+            fprintf(p->fw,"%d",p->score);
             p->h->gameOverKresli();
         }
+
 
 
 
@@ -179,7 +182,7 @@ int main(int argc, char** argv)
                 case SDLK_RETURN:
                     if(p->h->gameOverTrue==true){
                         delete p->h;
-                        p->h = new Had();
+                        p->h = new Had(p);
                         for(int i = 0; i <= p->PocetJablek; i++){
                             delete p->pole[i];
                             p->pole[i] = new Ovoce(p);

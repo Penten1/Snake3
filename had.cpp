@@ -9,7 +9,7 @@ int obrazovkaVyska;
 extern int otoc;
 extern int otoc2;
 
-Had::Had()
+Had::Had(Plocha *p)
 {
 
     sirkaHada = 32;
@@ -35,6 +35,7 @@ Had::Had()
     }
     //    poziceX = 20;
     gameOverTrue = false;
+    this->p = p;
 }
 
 void Had::kresli(){
@@ -97,6 +98,7 @@ void Had::pohyb(){
         if(jeNarazDoOcasu(poziceX + rychlostX,poziceY + rychlostY)){
             gameOverTrue = true;
             gameOver();
+
         }
 
 

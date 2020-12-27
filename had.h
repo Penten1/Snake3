@@ -11,7 +11,7 @@ class Clanek;
 class Had
 {
 public:
-    Had();
+    Had(Plocha *p);
     void pohyb();
     void kresli();
     float poziceX;
@@ -33,7 +33,7 @@ public:
     int zdrzeni2;
     Obrazek gameOver2;
     int pocetPoli;
-
+    Plocha *p;
 
 private:
     bool jeNarazDoOcasu(int poziceX, int poziceY);

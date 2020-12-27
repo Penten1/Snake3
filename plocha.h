@@ -22,6 +22,7 @@ public:
     void kresli();
     int obrazovkaSirka;
     int obrazovkaVyska;
+    FILE * fw;
 
 };
 

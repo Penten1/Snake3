@@ -1,11 +1,12 @@
 #include "plocha.h"
 
+
 Plocha::Plocha()
 {
     PocetJablek = 2;
     pocetPoli = 30;
     sirkaPole = 32;
-    h = new Had();
+    h = new Had(this);
     score = 0;
     for(int i = 0;i < PocetJablek;i++){
         pole[i] = new Ovoce(this);
@@ -22,6 +23,8 @@ void Plocha::kolize(){
             delete pole[i];
             pole[i] = new Ovoce(this);
             score = score + 10;
+
+
         }
     }
 
