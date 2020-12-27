@@ -16,6 +16,11 @@ public:
     void kolize();
     int pocetPoli;
     int sirkaPole;
+    int score;
+    Pismo cisla;
+    void kresli();
+
+
 };
 
 #endif // PLOCHA_H

@@ -4,12 +4,14 @@ Plocha::Plocha()
 {
     PocetJablek = 2;
     pocetPoli = 30;
-    sirkaPole = 32;
-    h = new Had();
+    sirkaPole = 42;
+    h = new Had(this);
 
     for(int i = 0;i < PocetJablek;i++){
         pole[i] = new Ovoce(this);
     }
+    cisla.nacti("cisla.png","1234567890");
+    cisla.umisti(20,20);
 }
 
 void Plocha::kolize(){

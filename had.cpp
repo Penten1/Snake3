@@ -9,17 +9,17 @@ int obrazovkaVyska;
 extern int otoc;
 extern int otoc2;
 
-Had::Had()
+Had::Had(Plocha *p)
 {
-
-    sirkaHada = 32;
-    pocetPoli = 30;
+    this->p = p;
+    sirkaHada = p->sirkaPole;
+    pocetPoli = p->pocetPoli;
     obrazovkaSirka = sirkaHada * pocetPoli;
     obrazovkaVyska = sirkaHada * pocetPoli;
 
     //    obrazovkaSirka = sirkaHada * pocetPoli;
     //    obrazovkaVyska = sirkaHada * pocetPoli;
-    poziceY = obrazovkaVyska/3 * 2 / sirkaHada;
+    poziceY = obrazovkaVyska / 3 * 2 / sirkaHada;
     poziceX = (obrazovkaSirka / 2) / sirkaHada;
     //    poziceY = 1;
     //    poziceX = 1;

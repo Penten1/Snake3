@@ -62,16 +62,13 @@ int main(int argc, char** argv)
     int ac;
     p = new Plocha;
 
-    const int pocetPoli = 30;
-    const int obrazovkaSirka = p->h->sirkaHada * pocetPoli;
-    const int obrazovkaVyska = p->h->sirkaHada * pocetPoli;
+    const int pocetPoli = p->pocetPoli;
+    const int obrazovkaSirka = p->sirkaPole * pocetPoli;
+    const int obrazovkaVyska = p->sirkaPole * pocetPoli;
     obrazovka->inicializuj(obrazovkaSirka, obrazovkaVyska, 0, 0);
     //    SDL_WM_SetIcon(SDL_LoadBMP("icon.BMP"), NULL);
     SDL_WM_SetCaption("Snake by Matyáš Skřenek", NULL);
 
-    Pismo cisla;
-    cisla.nacti("cisla.png","1234567890");
-    cisla.umisti(20,20);
 
     while(1)
     {
@@ -108,7 +105,7 @@ int main(int argc, char** argv)
             p->h->gameOverKresli();
         }
 
-        cisla.kresli(20);
+
 
         otocP=otoc;
         otocP2=otoc2;
@@ -184,7 +181,7 @@ int main(int argc, char** argv)
                 case SDLK_RETURN:
                     if(p->h->gameOverTrue==true){
                         delete p->h;
-                        p->h = new Had();
+                        p->h = new Had(p);
                         for(int i = 0; i <= p->PocetJablek; i++){
                             delete p->pole[i];
                             p->pole[i] = new Ovoce(p);
