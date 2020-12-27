@@ -13,7 +13,7 @@ Clanek *clanek;
 int otoc = 0;
 int otoc2 = 0;
 
-
+Pismo cisla;
 
 void Domecek(int bod1X,int bod1Y ,int bod2X, int bod2Y, int pocet, int barvaC){
 
@@ -61,7 +61,7 @@ int main(int argc, char** argv)
     Obrazovka* obrazovka = Obrazovka::instance();
     int ac;
     p = new Plocha;
-    Pismo cisla;
+
     cisla.nacti("cisla.png","1234567890");
     cisla.umisti(20,20);
     const int pocetPoli = p->pocetPoli;
