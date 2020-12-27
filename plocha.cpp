@@ -37,9 +37,19 @@ void Plocha::cary(){
     }
 }
 void Plocha::kresli(){
-    cary();
+//    cary();
     cisla.kresli(score);
+}
 
+void Plocha::gameOverKresli(){
+    gameOver2.nacti("game over2.png");
+    gameOver2.umisti(obrazovkaSirka / 2 - gameOver2.w / 2,obrazovkaVyska / 2 - gameOver2.h / 2);
+    gameOver2.kresli();
+    obrHighScore.nacti("high score2.png");
+    obrHighScore.umisti(obrazovkaSirka/2 - obrHighScore.w/2,obrazovkaVyska/3*2-obrHighScore.h-20);
+    obrHighScore.kresli();
+    highScore.umisti(obrazovkaSirka / 2-25,obrazovkaVyska/3*2);
+    highScore.kresli(nacteneScore);
 }
 
 

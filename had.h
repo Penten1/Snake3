@@ -31,7 +31,7 @@ public:
     int counter;
     int zdrzeni;
     int zdrzeni2;
-    Obrazek gameOver2;
+
     int pocetPoli;
     Plocha *p;
 

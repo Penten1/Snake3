@@ -72,6 +72,7 @@ int main(int argc, char** argv)
 
 
     p->cisla.nacti("cisla.png","1234567890");
+    p->highScore.nacti("cisla.png","1234567890");
 
     while(1)
     {
@@ -100,17 +101,18 @@ int main(int argc, char** argv)
 
         p->h->pohyb();
         p->kolize();
+
         if(p->h->gameOver()){
             p->fw = fopen("high score", "r");
-            int nacteneScore = 0;
-            fscanf(p->fw,"%d",&nacteneScore);
-            if(p->score > nacteneScore){
+            p->nacteneScore = 0;
+            fscanf(p->fw,"%d",&p->nacteneScore);
+            if(p->score > p->nacteneScore){
                 p->fw = fopen("high score", "w");
                 fprintf(p->fw,"%d",p->score);
                 fclose(p->fw);
             }
 
-            p->h->gameOverKresli();
+            p->gameOverKresli();
         }
 
 

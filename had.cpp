@@ -153,13 +153,13 @@ void Had::pohyb(){
 
 bool Had::gameOver(){
 
-    if(poziceX  > pocetPoli - 1){
+    if(poziceX  > pocetPoli){
         rychlost = 0;
         rychlostX = 0;
         rychlostY = 0;
         return true;
     }
-    if(poziceX < 0){
+    if(poziceX < 1){
         rychlost = 0;
         rychlostX = 0;
         rychlostY = 0;
@@ -183,11 +183,7 @@ bool Had::gameOver(){
     return false;
 }
 
-void Had::gameOverKresli(){
-    gameOver2.nacti("game over2.png");
-    gameOver2.umisti(obrazovkaSirka / 2 - gameOver2.w / 2,obrazovkaVyska / 2 - gameOver2.h / 2);
-    gameOver2.kresli();
-}
+
 
 bool Had::jeNarazDoOcasu(int poziceX, int poziceY){
     for(c = clanky.begin(); c != clanky.end(); c++)
