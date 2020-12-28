@@ -39,11 +39,17 @@ void Plocha::cary(){
         cara(i,0,i,obrazovkaVyska);
         cara(0,i,obrazovkaSirka,i);
     }
+
 }
 
 void Plocha::kresli(){
 //    cary();
     cisla.kresli(score);
+    barva(BILA);
+    cara(0,0,0,obrazovkaVyska);
+    cara(0,0,obrazovkaSirka,0);
+    cara(obrazovkaSirka,0,obrazovkaSirka-1,obrazovkaVyska);
+    cara(0,obrazovkaVyska,obrazovkaSirka,obrazovkaVyska-1);
 }
 
 void Plocha::gameOverKresli(){
@@ -55,6 +61,13 @@ void Plocha::gameOverKresli(){
     obrHighScore.kresli();
     highScore.umisti(obrazovkaSirka / 2-25,obrazovkaVyska/3*2);
     highScore.kresli(nacteneScore);
+
+}
+
+void Plocha::uvodniMenu(){
+    exit.nacti("exit.png");
+    exit.umisti(0,0);
+    exit.kresli();
 }
 
 

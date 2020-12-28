@@ -66,11 +66,12 @@ int main(int argc, char** argv)
 
 
 
-    obrazovka->inicializuj(p->obrazovkaSirka, p->obrazovkaVyska, 0, 0);
+//    obrazovka->inicializuj(p->obrazovkaSirka, p->obrazovkaVyska, 0,SDL_FULLSCREEN);
+         obrazovka->inicializuj(p->obrazovkaSirka, p->obrazovkaVyska, 0,0);
     //    SDL_WM_SetIcon(SDL_LoadBMP("icon.BMP"), NULL);
     SDL_WM_SetCaption("Snake by Matyáš Skřenek", NULL);
 
-
+    bool menuKresli = true;
 
     p->cisla.nacti("cisla.png","1234567890");
     p->highScore.nacti("cisla.png","1234567890");
@@ -126,6 +127,10 @@ int main(int argc, char** argv)
         otocP2=otoc2;
         p->kresli();
 
+        if(menuKresli){
+            p->uvodniMenu();
+        }
+
         /* konec kresleni */
         obrazovka->aktualizuj();
 
@@ -142,6 +147,9 @@ int main(int argc, char** argv)
                     SDL_Quit();
                     return 0;
                 case SDLK_a:
+                    if(menuKresli){
+                        menuKresli=false;
+                    }
                     if(p->h->gameOverTrue == false){
                         if((p->h->rychlostX != p->h->rychlost && p->h->rychlostY != 0)|| (p->h->rychlostX == 0 && p->h->rychlostY == 0)){
                             otocP=otoc;
@@ -157,6 +165,9 @@ int main(int argc, char** argv)
                     }
                     break;
                 case SDLK_w:
+                    if(menuKresli){
+                        menuKresli=false;
+                    }
                     if(p->h->gameOverTrue == false){
                         if((p->h->rychlostX != 0 && p->h->rychlostY != p->h->rychlost) || (p->h->rychlostX == 0 && p->h->rychlostY == 0)){
                             if(otoc != 0 && otoc2 == 0){
@@ -170,6 +181,9 @@ int main(int argc, char** argv)
                     break;
 
                 case SDLK_s:
+                    if(menuKresli){
+                        menuKresli=false;
+                    }
                     if(p->h->gameOverTrue == false){
                         if((p->h->rychlostX != 0 && p->h->rychlostY != -p->h->rychlost)){
                             if(otoc != 0 && otoc2 == 0){
@@ -182,6 +196,9 @@ int main(int argc, char** argv)
                     }
                     break;
                 case SDLK_d:
+                    if(menuKresli){
+                        menuKresli=false;
+                    }
                     if(p->h->gameOverTrue == false){
                         if((p->h->rychlostX != -p->h->rychlost && p->h->rychlostY != 0) || (p->h->rychlostX == 0 && p->h->rychlostY == 0)){
                             ac = otoc;
@@ -195,14 +212,21 @@ int main(int argc, char** argv)
                     }
                     break;
                 case SDLK_RETURN:
+                    if(menuKresli){
+                        menuKresli=false;
+                    }
+                    //                    if(p->h->gameOverTrue==true){
+                    //                        delete p->h;
+                    //                        p->h = new Had(p);
+                    //                        for(int i = 0; i <= p->PocetJablek; i++){
+                    //                            delete p->pole[i];
+                    //                            p->pole[i] = new Ovoce(p);
+                    //                        }
+                    //                        p->score = 0;
+                    //                    }
                     if(p->h->gameOverTrue==true){
-                        delete p->h;
-                        p->h = new Had(p);
-                        for(int i = 0; i <= p->PocetJablek; i++){
-                            delete p->pole[i];
-                            p->pole[i] = new Ovoce(p);
-                        }
-                        p->score = 0;
+                        delete p;
+                        p = new Plocha;
                     }
                     break;
                 }

@@ -29,6 +29,8 @@ public:
     void gameOverKresli();
     Obrazek gameOver2;
     int zdrzeni = 190; /*ms*/
+    Obrazek exit;
+    void uvodniMenu();
 
 };
 
